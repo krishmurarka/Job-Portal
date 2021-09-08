@@ -14,9 +14,11 @@ class tryer(scrapy.Spider):
     name = 'quoutes'
     # start_urls=xyz
     start_urls = ['https://in.linkedin.com/jobs/search?keywords=&location=India&locationId=&geoId=102713980&sortBy=R&f_TPR=&f_JT=I&f_E=1%2C2&position=1&pageNum=0']
-
+    
     def parse(self, response):
-        job_title = response.css("span.screen-reader-text")[0].extract()
-        item['job_title'] = job_title
-        # yield{'Title is ': job_title}
-        yield item
+        items=TutorialItem()
+        job_title = response.css("span.screen-reader-text::text")[0].extract()
+        job_title = job_title.replace('\n','')
+        job_title = job_title.strip()
+        items['job_title'] = job_title
+        yield items

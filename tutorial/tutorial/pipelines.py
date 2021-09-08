@@ -12,13 +12,14 @@ class TutorialPipeline(object):
     def __init__(self):
         self.create_connection()
         self.create_table()
-
+        # self.process_item()
+        # self.store_db()
     def create_connection(self):
         self.conn = mysql.connector.connect(
             host='localhost',
             user='root',
-            passwd='taranmysql',
-            database='job_portal'
+            passwd='1234',
+            database='jobs'
         )
         self.curr = self.conn.cursor()
 
@@ -28,10 +29,12 @@ class TutorialPipeline(object):
             job_title text)""")
 
     def process_item(self, item, spider):
+        self.store_db(item)
         return item
 
     def store_db(self, item):
-        self.curr.execute("""INSERT INTO quotes_tb (%s, %s, %s)""", (
-            item['job_title'][0],
+        print("Taran kya kaam kiye ho ??????")
+        self.curr.execute("""INSERT INTO quotes_tb VALUES(%s)""", (
+            item['job_title'],
         ))
         self.conn.commit()
