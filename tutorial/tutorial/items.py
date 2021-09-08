@@ -10,4 +10,5 @@ class TutorialItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     job_title = scrapy.Field()
+    hyperlink = scrapy.Field()
     pass

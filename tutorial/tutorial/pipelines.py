@@ -26,7 +26,7 @@ class TutorialPipeline(object):
     def create_table(self):
         self.curr.execute("""DROP TABLE IF EXISTS quotes_tb """)
         self.curr.execute("""CREATE TABLE quotes_tb(
-            job_title text)""")
+            job_title text, hyperlink text)""")
 
     def process_item(self, item, spider):
         self.store_db(item)
@@ -34,7 +34,7 @@ class TutorialPipeline(object):
 
     def store_db(self, item):
         print("Taran kya kaam kiye ho ??????")
-        self.curr.execute("""INSERT INTO quotes_tb VALUES(%s)""", (
-            item['job_title'],
+        self.curr.execute("""INSERT INTO quotes_tb VALUES(%s,%s)""", (
+            item['job_title'],item['hyperlink']
         ))
         self.conn.commit()

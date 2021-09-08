@@ -14,11 +14,30 @@ class tryer(scrapy.Spider):
     name = 'quoutes'
     # start_urls=xyz
     start_urls = ['https://in.linkedin.com/jobs/search?keywords=&location=India&locationId=&geoId=102713980&sortBy=R&f_TPR=&f_JT=I&f_E=1%2C2&position=1&pageNum=0']
-    
+
     def parse(self, response):
-        items=TutorialItem()
-        job_title = response.css("span.screen-reader-text::text")[0].extract()
-        job_title = job_title.replace('\n','')
-        job_title = job_title.strip()
-        items['job_title'] = job_title
+        items = TutorialItem()
+        # job_title = response.css("span.screen-reader-text::text")[0].extract()
+        # job_title = job_title.replace('\n', '')
+        # job_title = job_title.strip()
+        lists = response.css("ul.jobs-search__results-list li").extract()
+        for i in lists:
+            #Gives the link for the connecting page
+            hyperlink=response.css("a.base-card__full-link").xpath("@href").extract()
+
+            #Extracts the job title
+            job_title = response.css("span.screen-reader-text::text")[0].extract()
+            job_title = job_title.replace('\n', '')
+            job_title = job_title.strip()
+            items['job_title'].append(job_title)
+            items['hyperlink'].append(hyperlink)
         yield items
+
+
+
+    
+
+       
+
+
+
