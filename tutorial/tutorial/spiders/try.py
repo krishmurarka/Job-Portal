@@ -24,14 +24,14 @@ class tryer(scrapy.Spider):
         for i in lists:
             #Gives the link for the connecting page
             hyperlink=response.css("a.base-card__full-link").xpath("@href").extract()
-
+            # print(hyperlink[0])
             #Extracts the job title
             job_title = response.css("span.screen-reader-text::text")[0].extract()
             job_title = job_title.replace('\n', '')
             job_title = job_title.strip()
-            items['job_title'].append(job_title)
-            items['hyperlink'].append(hyperlink)
-        yield items
+            items['job_title']=job_title
+            items['hyperlink']=hyperlink[0]
+            yield items
 
 
 
