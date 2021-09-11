@@ -20,17 +20,16 @@ class tryer(scrapy.Spider):
         # job_title = response.css("span.screen-reader-text::text")[0].extract()
         # job_title = job_title.replace('\n', '')
         # job_title = job_title.strip()
-        lists = response.css("ul.jobs-search__results-list li").extract()
-        for i in lists:
-            #Gives the link for the connecting page
-            hyperlink=response.css("a.base-card__full-link").xpath("@href").extract()
-            # print(hyperlink[0])
-            #Extracts the job title
-            job_title = response.css("span.screen-reader-text::text")[0].extract()
+        # lists = response.css("ul.jobs-search__results-list li").extract()
+        hyperlinks=response.css("a.base-card__full-link").xpath("@href").extract()
+        job_titles = response.css("span.screen-reader-text::text").extract()
+        for i in range(0,len(hyperlinks)):
+            hyperlink=hyperlinks[i]
+            job_title=job_titles[i]
             job_title = job_title.replace('\n', '')
             job_title = job_title.strip()
             items['job_title']=job_title
-            items['hyperlink']=hyperlink[0]
+            items['hyperlink']=hyperlink
             yield items
 
 
