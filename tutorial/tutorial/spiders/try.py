@@ -21,22 +21,20 @@ class tryer(scrapy.Spider):
         # job_title = job_title.replace('\n', '')
         # job_title = job_title.strip()
         # lists = response.css("ul.jobs-search__results-list li").extract()
-        hyperlinks=response.css("a.base-card__full-link").xpath("@href").extract()
+        hyperlinks = response.css(
+            "a.base-card__full-link").xpath("@href").extract()
         job_titles = response.css("span.screen-reader-text::text").extract()
-        for i in range(0,len(hyperlinks)):
-            hyperlink=hyperlinks[i]
-            job_title=job_titles[i]
+        job_images = response.css(
+            "div.search-entity-media img.artdeco-entity-image").xpath("@src").extract()
+        print(len(job_images))
+        # print('job_image =' + job_images[0])
+        for i in range(0, len(hyperlinks)):
+            hyperlink = hyperlinks[i]
+            job_title = job_titles[i]
+            job_image = ""
             job_title = job_title.replace('\n', '')
             job_title = job_title.strip()
-            items['job_title']=job_title
-            items['hyperlink']=hyperlink
+            items['job_title'] = job_title
+            items['hyperlink'] = hyperlink
+            items['job_image'] = job_image
             yield items
-
-
-
-    
-
-       
-
-
-
