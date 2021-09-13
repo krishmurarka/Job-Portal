@@ -7,6 +7,7 @@ from ..items import TutorialItem
 #     url=ur+str(counter)
 #     counter=counter+1
 #     xyz.append(url)
+#  ghost - url (default image file) -> https://static-exp1.licdn.com/sc/h/9a9u41thxt325ucfh5z8ga4m8
 
 
 class tryer(scrapy.Spider):
@@ -17,24 +18,32 @@ class tryer(scrapy.Spider):
 
     def parse(self, response):
         items = TutorialItem()
-        # job_title = response.css("span.screen-reader-text::text")[0].extract()
-        # job_title = job_title.replace('\n', '')
-        # job_title = job_title.strip()
-        # lists = response.css("ul.jobs-search__results-list li").extract()
+
         hyperlinks = response.css(
             "a.base-card__full-link").xpath("@href").extract()
         job_titles = response.css("span.screen-reader-text::text").extract()
-        job_images = response.css(
-            "div.search-entity-media img.artdeco-entity-image").xpath("@src").extract()
-        print(len(job_images))
-        # print('job_image =' + job_images[0])
+
+        company_name = response.css(
+            "h4.base-search-card__subtitle a::text").extract()
+        job_location = response.css(
+            "div.base-search-card__metadata span.job-search-card__location::text ").extract()
         for i in range(0, len(hyperlinks)):
+            # hyperlink
             hyperlink = hyperlinks[i]
+            # job-title
             job_title = job_titles[i]
-            job_image = ""
             job_title = job_title.replace('\n', '')
             job_title = job_title.strip()
+            # companyName
+            companyName = company_name[i]
+            companyName = companyName.replace('\n', '')
+            companyName = companyName.strip()
+            # jobLocation
+            jobLocation = job_location[i]
+            jobLocation = jobLocation.replace('\n', '')
+            jobLocation = jobLocation.strip()
             items['job_title'] = job_title
             items['hyperlink'] = hyperlink
-            items['job_image'] = job_image
+            items['companyName'] = companyName
+            items['jobLocation'] = jobLocation
             yield items
