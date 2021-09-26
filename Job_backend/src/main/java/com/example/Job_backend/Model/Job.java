@@ -3,7 +3,7 @@ package com.example.Job_backend.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "quoutes_tb")
+@Table(name = "quotes_tb")
 public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,7 +14,7 @@ public class Job {
     private String Company_Logo;
     private String Job_Location;
     //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
-    private Long Category_id;
+    private int Category_id;
 
     //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
     private Long Stream_id;
@@ -23,15 +23,15 @@ public class Job {
     public Job() {
     }
 
-    public Job(Long id, String company_Name, String job_Title, String url, String company_Logo, String job_Location, Long category_id, Long stream_id) {
+    public Job(Long id, String company_Name, String job_Title, String url, String company_Logo, String job_Location, int category_id, Long stream_id) {
         this.id = id;
-        Company_Name = company_Name;
-        Job_Title = job_Title;
-        Url = url;
-        Company_Logo = company_Logo;
-        Job_Location = job_Location;
-        Category_id = category_id;
-        Stream_id = stream_id;
+        this.Company_Name = company_Name;
+        this.Job_Title = job_Title;
+        this.Url = url;
+        this.Company_Logo = company_Logo;
+        this.Job_Location = job_Location;
+        this.Category_id = category_id;
+        this.Stream_id = stream_id;
     }
 
     public Long getId() {
@@ -82,11 +82,11 @@ public class Job {
         Job_Location = job_Location;
     }
 
-    public Long getCategory_id() {
+    public int getCategory_id() {
         return Category_id;
     }
 
-    public void setCategory_id(Long category_id) {
+    public void setCategory_id(int category_id) {
         Category_id = category_id;
     }
 

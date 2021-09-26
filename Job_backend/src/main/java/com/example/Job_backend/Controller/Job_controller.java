@@ -18,12 +18,13 @@ import java.util.List;
 @RestController
 public class Job_controller {
 
-     @Autowired
-     private JobCategoryRepository jobCategoryRepository;
+    @Autowired
+    private JobCategoryRepository jobCategoryRepository;
 
     // intern - {  , , }
     @GetMapping("/getJobCategory/{jobCategory}")
     public List<Job> getJob(@PathVariable(value = "jobCategory") int jobCategory) throws Exception {
-            return jobCategoryRepository.findAllCategories(jobCategory);
+        System.out.println("Hey =");
+        return jobCategoryRepository.findAllCategories(jobCategory);
     }
 }
