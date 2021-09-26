@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public interface UserJobCategory {
 
-    //    public JobCategory jobCategory;
+    // public JobCategory jobCategory;
 //    @Query(value = "Select * from quotes_tb t where t.jobCategory =: 1", nativeQuery = true)
-//    public List<Job> findAllCategories(int JobCategoryId) throws Exception;
+    public List<Job> findAllCategories(int JobCategoryId) throws Exception;
 }

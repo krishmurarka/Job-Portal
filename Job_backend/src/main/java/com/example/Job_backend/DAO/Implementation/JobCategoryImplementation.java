@@ -18,7 +18,7 @@ public class JobCategoryImplementation implements UserJobCategory {
 
 
 
-//    @Override
+    @Override
     public List<Job> findAllCategories(int JobCategoryId) throws Exception {
 
         // find through JobCategory for each category

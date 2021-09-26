@@ -1,5 +1,6 @@
 package com.example.Job_backend.Controller;
 
+import com.example.Job_backend.DAO.Implementation.JobCategoryImplementation;
 import com.example.Job_backend.DAO.UserJobCategory;
 import com.example.Job_backend.Model.Job;
 import com.example.Job_backend.Model.JobCategory;
@@ -17,24 +18,12 @@ import java.util.List;
 @RestController
 public class Job_controller {
 
-    @Autowired
-    private UserJobCategory userJobCategory;
-//
-//    @Autowired
-//    private JobRepository jobRepository;
-//    @Autowired
-//    private JobCategoryRepository jobCategoryRepository;
-//
-    @Autowired
-    private Job job;
-    @Autowired
-    private JobCategory jobCategory;
-    @Autowired
-    private Streams streams;
+     @Autowired
+     private JobCategoryRepository jobCategoryRepository;
 
     // intern - {  , , }
-//    @GetMapping("/getJobCategory/{jobCategory}")
-//    public List<Job> getJob(@PathVariable(value = "jobCategory") int jobCategory) throws Exception {
-//            return userJobCategory.findAllCategories(jobCategory);
-//    }
+    @GetMapping("/getJobCategory/{jobCategory}")
+    public List<Job> getJob(@PathVariable(value = "jobCategory") int jobCategory) throws Exception {
+            return jobCategoryRepository.findAllCategories(jobCategory);
+    }
 }
