@@ -13,18 +13,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
 public class Job_controller {
 
     @Autowired
-    private JobCategoryRepository jobCategoryRepository;
+    private JobRepository jobRepository;
 
     // intern - {  , , }
-    @GetMapping("/getJobCategory/{jobCategory}")
+    @GetMapping("/findAllCategories/{jobCategory}")
     public List<Job> getJob(@PathVariable(value = "jobCategory") int jobCategory) throws Exception {
         System.out.println("Hey =");
-        return jobCategoryRepository.findAllCategories(jobCategory);
+        List<Job> jobs=jobRepository. findAllCategories(jobCategory);
+        System.out.println(Arrays.toString(jobs.toArray()));
+        return jobs;
     }
 }

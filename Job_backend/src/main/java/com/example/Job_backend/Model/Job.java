@@ -2,10 +2,10 @@ package com.example.Job_backend.Model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Job")
 @Table(name = "quotes_tb")
 public class Job {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String Company_Name;
@@ -14,6 +14,7 @@ public class Job {
     private String Company_Logo;
     private String Job_Location;
     //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
+    @Id
     private int Category_id;
 
     //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
@@ -96,6 +97,20 @@ public class Job {
 
     public void setStream_id(Long stream_id) {
         Stream_id = stream_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", Company_Name='" + Company_Name + '\'' +
+                ", Job_Title='" + Job_Title + '\'' +
+                ", Url='" + Url + '\'' +
+                ", Company_Logo='" + Company_Logo + '\'' +
+                ", Job_Location='" + Job_Location + '\'' +
+                ", Category_id=" + Category_id +
+                ", Stream_id=" + Stream_id +
+                '}';
     }
 }
 
