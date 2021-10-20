@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./Components/Navbar.js";
 import Card from "./Components/Card.js";
-
+import Footer from "./Components/Footer.js"
 function App() {
   return (
     <div className="App">
@@ -15,12 +15,13 @@ function App() {
         <Card />
         <Card />
       </div>
-      <div className="card_hi" style={{marginTop: "3rem"}}>
+      <div className="card_hi" style={{ marginTop: "3rem" }}>
         <Card />
         <Card />
         <Card />
+
       </div>
-     
+      <Footer />
     </div>
   );
 }
