@@ -8,31 +8,37 @@ class Footer extends Component {
         return (
             <div className="footer-container">
                 <div className="footer" >
-                    <div className="container" >
-                        <img src={AppLogo} alt="" width="120rem" />
+                    <div className="container  col-sm-4 col-md-4">
+                        <img src={AppLogo} alt=""  />
                     </div>
-                    <div>
-                        <span className="footer-content">
-                            <h8 style={{ color: 'white' }}>Get job updates delivered to your inbox</h8>
-                            {/* <br />
-                            <br /> */}
+                    <div className="footer-text-container  col-sm-8 col-md-8">
+                        {/* <div className="col-sm-2"></div> */}
+                        <div className="footer-content ">
+                            <h6 style={{ color: 'white' }}>Get job updates delivered to your inbox</h6>
                             <h5 style={{ color: 'white' }} >Subscribe to our newsletter</h5>
-                        </span>
-
-                        <span className="email-content" >
+                        </div>
+                        <div className="email-content" >
                             <form >
-                                <input type="email" placeholder="Enter your email"></input>
+                                <input type="email" placeholder=" Email"></input>
                             </form>
-                        </span>
+                        </div>
+                        
+                        
                     </div>
-                    <div className="media-container">
+                   
+                    {/* <div className="media-container">
                         <h3>Follow us on social media</h3>
-                    </div>
+                    </div> */}
                     {/* <div className="social-media-container">
                         <ul className="footer-links flex-container">
                             <li><a href="https://google.com" >Instagram</a></li>
                         </ul>
                     </div> */}
+                </div>
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-7"><hr className="horizontalLine"/></div>
+                    
                 </div>
             </div >
         )
