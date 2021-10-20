@@ -1,0 +1,28 @@
+.footer-container {
+    background-color: #262944;
+}
+
+.footer {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-left: 8rem;
+
+}
+
+.footer-content {
+    
+    
+}
+
+/*  
+
+.email-content {
+    margin-top: 30px;
+    margin-right: 200px;
+}
+
+.footer-links {
+    margin-top: 30px;
+    margin-right: 200px;
+} */
