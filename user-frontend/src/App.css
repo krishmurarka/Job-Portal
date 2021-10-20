@@ -9,3 +9,6 @@ body {
 	font-size: 1.5rem;
 	margin: 5rem 4rem;
 }
+.card_hi{
+	display: flex;
+}

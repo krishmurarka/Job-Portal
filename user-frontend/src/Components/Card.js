@@ -4,7 +4,7 @@ import AppLogo from "./assets/WebsiteLogo.png";
 class Card extends Component {
   render() {
     return (
-      <div>
+      <span>
         <div class="card">
           {/* we need two things in card header (title + image) */}
           <div class="cardheader">
@@ -33,7 +33,7 @@ class Card extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </span>
     );
   }
 }

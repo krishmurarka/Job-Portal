@@ -10,7 +10,17 @@ function App() {
       <div>
         <p className="featurehead" title="swiggy bangaluru urban">Featured listing</p>
       </div>
-      <Card />
+      <div className="card_hi">
+        <Card />
+        <Card />
+        <Card />
+      </div>
+      <div className="card_hi" style={{marginTop: "3rem"}}>
+        <Card />
+        <Card />
+        <Card />
+      </div>
+     
     </div>
   );
 }
