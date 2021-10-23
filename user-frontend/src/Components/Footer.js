@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppLogo from "./assets/Group.png";
 import "./Footer.css";
-
+import { FaTelegram, FaDiscord, FaLinkedin } from "react-icons/fa";
 
 class Footer extends Component {
     render() {
@@ -9,7 +9,7 @@ class Footer extends Component {
             <div className="footer-container">
                 <div className="footer" >
                     <div className="container  col-sm-4 col-md-4">
-                        <img src={AppLogo} alt=""  />
+                        <img src={AppLogo} alt="" />
                     </div>
                     <div className="footer-text-container  col-sm-8 col-md-8">
                         {/* <div className="col-sm-2"></div> */}
@@ -22,24 +22,45 @@ class Footer extends Component {
                                 <input type="email" placeholder=" Email"></input>
                             </form>
                         </div>
-                        
-                        
                     </div>
-                   
-                    {/* <div className="media-container">
-                        <h3>Follow us on social media</h3>
-                    </div> */}
-                    {/* <div className="social-media-container">
-                        <ul className="footer-links flex-container">
-                            <li><a href="https://google.com" >Instagram</a></li>
-                        </ul>
-                    </div> */}
+
+
                 </div>
-                <div className="footer-bottom">Contact us personalised job listing</div>
                 <div className="row">
                     <div className="col-sm-4"></div>
-                    <div className="col-sm-8"><hr className="horizontalLine"/></div>
-                    
+                    <div className="col-sm-7"><hr className="horizontalLine" /></div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-8">
+                        <div className="media-content-container ">
+                            <h4 style={{ color: 'white' }}>Follow us on Social media</h4>
+                        </div>
+                        <div className="media-icons">
+                            <span className="media-icon-linkedin" >
+                                <FaLinkedin size="2em" spacing="10em" />
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            <span className="media-icon-discord">
+                                <FaDiscord size="2em" />
+                            </span>
+                            {/* {" "} */}
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+
+                            <span className="media-icon-telegram">
+                                <FaTelegram size="2em" />
+                            </span>
+                        </div>
+                    </div>
+
+
                 </div>
 
             </div >
