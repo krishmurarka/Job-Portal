@@ -12,3 +12,13 @@ body {
 .card_hi{
 	display: flex;
 }
+.job-listing-banner-container{
+	font-size: 2em;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 600;
+	margin-bottom: 2em;
+}
+.divison-container{
+	margin-top: 2rem;
+}
