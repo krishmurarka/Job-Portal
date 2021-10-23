@@ -35,11 +35,13 @@ class Footer extends Component {
                         </ul>
                     </div> */}
                 </div>
+                <div className="footer-bottom">Contact us personalised job listing</div>
                 <div className="row">
                     <div className="col-sm-4"></div>
-                    <div className="col-sm-7"><hr className="horizontalLine"/></div>
+                    <div className="col-sm-8"><hr className="horizontalLine"/></div>
                     
                 </div>
+
             </div >
         )
     }
