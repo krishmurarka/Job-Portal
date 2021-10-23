@@ -19,8 +19,9 @@ function App() {
         <Card />
         <Card />
         <Card />
-
       </div>
+      <div className = "divison-container"style={{ backgroundColor: 'white' }}>google ads</div>
+      <div className="job-listing-banner-container text-center" style={{ marginTop: "8rem" }}>Contact us personalized job listings</div>
       <Footer />
     </div>
   );
