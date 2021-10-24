@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import "./Card.css";
 import AppLogo from "./assets/WebsiteLogo.png";
+
 class Card extends Component {
+
+
   render() {
     return (
-      <span>
+
+      <span className="card-start col-xs-12 col-md-6 col-xl-4">
         <div class="card">
           {/* we need two things in card header (title + image) */}
           <div class="cardheader">
@@ -28,7 +32,7 @@ class Card extends Component {
                 Apply Now
               </a>
               <a href="#" class="btn btn-primary">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </a>
             </div>
           </div>
