@@ -1,29 +1,34 @@
 package com.example.Job_backend.Model;
 
+import jdk.jfr.Category;
+
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Job")
 @Table(name = "quotes_tb")
 public class Job {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    //    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String Company_Name;
     private String Job_Title;
+    @Id
     private String Url;
     private String Company_Logo;
     private String Job_Location;
-    //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
+
+    @OneToOne(targetEntity = JobCategory.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_Id", referencedColumnName = "Category_id")
     private int Category_id;
 
     //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
-    private Long Stream_id;
+    private char Stream_id;
 
 
     public Job() {
     }
 
-    public Job(Long id, String company_Name, String job_Title, String url, String company_Logo, String job_Location, int category_id, Long stream_id) {
+    public Job(Long id, String company_Name, String job_Title, String url, String company_Logo, String job_Location, int category_id, char stream_id) {
         this.id = id;
         this.Company_Name = company_Name;
         this.Job_Title = job_Title;
@@ -90,12 +95,25 @@ public class Job {
         Category_id = category_id;
     }
 
-    public Long getStream_id() {
+    public char getStream_id() {
         return Stream_id;
     }
 
-    public void setStream_id(Long stream_id) {
+    public void setStream_id(char stream_id) {
         Stream_id = stream_id;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", Company_Name='" + Company_Name + '\'' +
+                ", Job_Title='" + Job_Title + '\'' +
+                ", Url='" + Url + '\'' +
+                ", Company_Logo='" + Company_Logo + '\'' +
+                ", Job_Location='" + Job_Location + '\'' +
+                ", Category_id=" + Category_id +
+                ", Stream_id=" + Stream_id +
+                '}';
+    }
+}

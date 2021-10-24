@@ -15,6 +15,6 @@ import java.util.List;
 public interface JobCategoryRepository extends JpaRepository<JobCategory, Long> {
 
 
-    @Query(value = "Select * from quotes_tb t where t.category_id = 1", nativeQuery = true)
-    public List<Job> findAllCategories(int JobCategoryId) throws Exception;
+//    @Query(value = "Select * from quotes_tb t where t.category_id = 1", nativeQuery = true)
+//    public List<Job> findAllCategories(int JobCategoryId) throws Exception;
 }
