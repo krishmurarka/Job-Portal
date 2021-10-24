@@ -17,8 +17,8 @@ public class Job {
     private String Company_Logo;
     private String Job_Location;
 
-    @OneToOne(targetEntity = JobCategory.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_Id", referencedColumnName = "Category_id")
+//    @OneToOne(targetEntity = JobCategory.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "category_Id", referencedColumnName = "Category_id")
     private int Category_id;
 
     //    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")

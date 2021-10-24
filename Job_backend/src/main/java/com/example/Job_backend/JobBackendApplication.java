@@ -8,5 +8,6 @@ public class JobBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JobBackendApplication.class, args);
+        System.out.println(System.getProperty("catalina.base"));
     }
 }

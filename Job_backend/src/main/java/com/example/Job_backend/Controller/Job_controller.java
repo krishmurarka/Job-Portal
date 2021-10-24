@@ -4,6 +4,7 @@ package com.example.Job_backend.Controller;
 import com.example.Job_backend.Model.Job;
 import com.example.Job_backend.Repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,12 @@ public class Job_controller {
 
     @Autowired
     private JobRepository jobRepository;
-
+    // xss - cross site scripting  - important
+    // http prameter pollution
+    // csrf attacks (cross site request )
+    // server settings
     // intern - {  , , }
+    @CrossOrigin(origins = "*")
     @GetMapping("/findAllCategories/{jobCategory}")
     public List<Job> getJob(@PathVariable(value = "jobCategory") int jobCategory) throws Exception {
         List<Job> jobs = jobRepository.findAllCategories(jobCategory);
