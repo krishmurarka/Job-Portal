@@ -23,10 +23,9 @@ class internshala_intern(scrapy.Spider):
             "div.company div.company_name a::text").extract()
         job_location = response.css(
             "div.individual_internship_details span a::text").extract()
-        job_image = response.css(
-            "div.individual_internship_header div.internship_logo img").xpath("@src").extract()
+        imaging= response.css("div.individual_internship_header")
         # companyName.replace('\n', ' ').strip()
-        print(job_image)
+        # print(job_image)
         for i in range(0, len(company_name)):
             job_title = job_titles[i]
             companyName = company_name[i]
@@ -37,11 +36,16 @@ class internshala_intern(scrapy.Spider):
             jobLocation = jobLocation.replace('\n', '')
             jobLocation = jobLocation.strip()
             hyperlink = "http://internshala.com"+hyperlinks[i]
-
-            jobImage = "http://internshala.com"+job_image[i]
-            jobImage = jobImage.replace('\n', '')
-            jobImage = jobImage.strip()
-
+           
+            job_image = imaging[i].css("div.internship_logo img").xpath("@src").extract()
+            job_image=' '.join([str(elem) for elem in job_image])
+            if(len(job_image)==0):
+                jobImage = "https://static-exp1.licdn.com/sc/h/9a9u41thxt325ucfh5z8ga4m8"
+               
+            else:
+                jobImage = "http://internshala.com"+job_image
+                jobImage = jobImage.replace('\n', '')
+                jobImage = jobImage.strip()
             jobCategory = 1
             streamId = 'S'
             # jobLocation = ''

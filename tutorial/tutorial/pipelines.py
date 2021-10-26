@@ -17,16 +17,16 @@ class TutorialPipeline(object):
         self.conn = mysql.connector.connect(
             host='localhost',
             user='root',
-            passwd='taranmysql',
-            database='job_portal'
+            passwd='1234',
+            database='jobs'
         )
         self.curr = self.conn.cursor()
 
     def create_table(self):
         print('a')
-        # self.curr.execute("""DROP TABLE IF EXISTS quotes_tb """)
-        # self.curr.execute("""CREATE TABLE quotes_tb(
-        #        id int, category_id int,company_logo text, company_name text, job_location text, job_title text, stream_id text, url VARCHAR(255), UNIQUE (url))""")
+        self.curr.execute("""DROP TABLE IF EXISTS quotes_tb """)
+        self.curr.execute("""CREATE TABLE quotes_tb(
+               id int, category_id int,company_logo text, company_name text, job_location text, job_title text, stream_id text, url VARCHAR(255), UNIQUE (url))""")
 
     def process_item(self, item, spider):
         self.store_db(item)
