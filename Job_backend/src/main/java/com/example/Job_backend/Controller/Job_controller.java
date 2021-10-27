@@ -29,13 +29,13 @@ public class Job_controller {
         System.out.println(Arrays.toString(jobs.toArray()));
         return jobs;
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/findAllStreams/{streamId}")
     public List<Job> getStream(@PathVariable(value = "streamId") String streamId) throws Exception {
         List<Job> streamJobs = jobRepository.findAllStreams(streamId.charAt(0));
         return streamJobs;
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/findJobStreams/{jobCategory}/{streamId}")
     public List<Job> getJobStream(@PathVariable int jobCategory, @PathVariable String streamId) throws Exception {
         List<Job> jobStreamCategories = jobRepository.findJobStreams(jobCategory, streamId.charAt(0));
