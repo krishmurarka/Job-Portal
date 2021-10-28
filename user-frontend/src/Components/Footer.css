@@ -22,8 +22,6 @@
 .email-content {
     margin-top: 0.6rem;
     margin-left: 3rem;
-   
-    
 }
 input{
     background-color: rgba(255, 255, 255, 0.17) !important;
@@ -42,7 +40,7 @@ input{
     border-style: inset;
     border-top: 4px solid white;
     width: 40rem;
-    ;
+    
   }
   
  .media-content-container {
@@ -56,5 +54,69 @@ input{
 }
 
 .media-icon-linkedin{
-    align-items: center;
+    padding: 0 1rem;
 }
+.media-icon-telegram{
+    padding : 0 1rem;
+
+}
+.media-icon-discord{
+    padding : 0 1rem;
+}
+
+@media screen and (
+    max-width: 1127px
+){   
+    hr{
+        width: 33rem;
+        margin-left:4rem;
+    }
+}
+@media screen and (
+    max-width: 930px
+){   
+    hr{
+        width: 32rem;
+        margin-left:4rem;
+    }
+    .media-icons{
+        margin-left : 22rem;
+    }
+
+}
+
+@media screen and (
+    max-width: 900px
+){   
+    hr{
+        width: 27rem;
+        margin-left:4rem;
+    }
+
+}
+
+@media screen and (
+    max-width: 770px
+){   
+    hr{
+        width: 24rem;
+        margin-left:1rem;
+    }
+    /* .footer{
+        margin-left:2rem;
+    }
+    .media-content-container{
+        margin-left: 1rem;
+    } */
+    /* .media-icons{ */
+        /* margin-left : 21rem;
+        display: inline-block;
+    } */
+    .media-icons-check{
+        display: none;
+    }
+    
+    
+}
+
+    
