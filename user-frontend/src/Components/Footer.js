@@ -24,7 +24,6 @@ class Footer extends Component {
                         </div>
                     </div>
 
-
                 </div>
                 <div className="row">
                     <div className="col-sm-4"></div>
@@ -32,27 +31,30 @@ class Footer extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-8">
+                    <div className="col-xm-2 col-sm-4 media-icons-check"></div>
+                    <div className="col-xm-12 col-sm-8">
                         <div className="media-content-container ">
                             <h4 style={{ color: 'white' }}>Follow us on Social media</h4>
                         </div>
+                        
                         <div className="media-icons">
+                            
                             <span className="media-icon-linkedin" >
                                 <FaLinkedin size="2em" spacing="10em" />
                             </span>
+                            {/* &nbsp;
                             &nbsp;
                             &nbsp;
-                            &nbsp;
-                            &nbsp;
+                            &nbsp; */}
+                            
                             <span className="media-icon-discord">
                                 <FaDiscord size="2em" />
                             </span>
                             {/* {" "} */}
+                            {/* &nbsp;
                             &nbsp;
                             &nbsp;
-                            &nbsp;
-                            &nbsp;
+                            &nbsp; */}
 
                             <span className="media-icon-telegram">
                                 <FaTelegram size="2em" />
