@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
-
+import Card from "../.././Components/Card.js";
+import Footer from "../.././Components/Footer.js"
+import Api from "../.././Components/Api.js"
 class Fte extends Component {
     render() {
         return (
+            <>
             <div>
-                <h1>Welcome to JobEase</h1>
-                {/* <Navbar className="navbar" /> */}
+            <p className="featurehead" title="swiggy bangaluru urban">Full Time Listing</p>
             </div>
+            <div className="card_hi row">
+                <Api   type="findAllCategories" count="2"/>
+            </div>
+            <div className = "divison-container"style={{ backgroundColor: 'white' }}>google ads</div>
+            <div className="job-listing-banner-container text-center" style={{ marginTop: "8rem" }}>Contact us personalized job listings</div>
+            
+          </>
         )
     }
 }

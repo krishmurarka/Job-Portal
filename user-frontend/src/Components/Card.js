@@ -61,7 +61,7 @@ class Card extends Component {
               Fransisco
             </p>
             <div className="buttons">
-              <a href={this.props.url} class="btn btn-primary">
+              <a href={this.props.url} target="_blank" class="btn btn-primary">
                 Apply Now
               </a>
               <a href="#" class="btn btn-primary">

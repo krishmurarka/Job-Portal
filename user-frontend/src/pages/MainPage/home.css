@@ -1,0 +1,27 @@
+body {
+    background-color:  hsla(234, 100%, 93%, 0.932);
+    
+    
+}
+.navbar{
+    background-color: white;
+}
+.featurehead{
+    color: black;
+    font-size: 1.5rem;
+    margin: 5rem 4rem 0rem 4rem;
+}
+.card_hi{
+    display: flex;
+    
+}
+.job-listing-banner-container{
+    font-size: 2em;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 2em;
+}
+.divison-container{
+    margin-top: 2rem;
+}

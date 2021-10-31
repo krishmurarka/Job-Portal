@@ -8,10 +8,10 @@ class Footer extends Component {
         return (
             <div className="footer-container">
                 <div className="footer" >
-                    <div className="container  col-sm-4 col-md-4">
+                    <div className="container col-xs-2  col-sm-4 col-md-4">
                         <img src={AppLogo} alt="" />
                     </div>
-                    <div className="footer-text-container  col-sm-8 col-md-8">
+                    <div className="footer-text-container col-xs-10 col-sm-8 col-md-8">
                         {/* <div className="col-sm-2"></div> */}
                         <div className="footer-content ">
                             <h6 style={{ color: 'white' }}>Get job updates delivered to your inbox</h6>
