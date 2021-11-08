@@ -71,7 +71,23 @@ class tryer(scrapy.Spider):
             items['jobImage'] = jobImage
             items['streamId'] = streamId
             # items to be added - stream, intern/fte, productbased/servicetype/startup
-            yield items
+            # yield items
+
+        for i in range(0,len(hyperlinks)):
+            
+            # print(hyperlinks[i])
+            yield response.follow(hyperlinks[i],callback = self.parse_hyperlink)
+            
+    def parse_hyperlink(self,response):
+        items = TutorialItem()
+
+        description = response.css("div.show-more-less-html__markup::text").extract()
+        for i in range(len(description)):
+            desc = description[i]
+            desc = desc.replace('\n', '')
+            desc = desc.strip()
+            # items['desc'] = desc
+            print(desc)
 
 
 # https://static-exp1.licdn.com/sc/h/9a9u41thxt325ucfh5z8ga4m8
