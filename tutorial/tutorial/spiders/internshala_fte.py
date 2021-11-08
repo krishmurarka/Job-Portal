@@ -7,7 +7,7 @@ class internshala_fte(scrapy.Spider):
     name = 'internshala_fte'
 
     start_urls = ["https://internshala.com/fresher-jobs"]
-
+    items = TutorialItem()
     def parse(self, response):
 
         items = TutorialItem()
@@ -56,4 +56,20 @@ class internshala_fte(scrapy.Spider):
             items['jobImage'] = jobImage
             items['streamId'] = streamId
 
+            # yield items
+        for i in range(0,len(hyperlinks)):
+            
+            # print(hyperlinks[i])
+            yield response.follow(hyperlinks[i],callback = self.parse_hyperlink)
+            
+    def parse_hyperlink(self,response):
+        # items = TutorialItem()
+
+        description = response.css("div.about_company_text_container::text").extract()
+        for i in range(len(description)):
+            desc = description[i]
+            desc = desc.replace('\n', '')
+            desc = desc.strip()
+            items['desc'] = desc
             yield items
+            # print(desc)    
