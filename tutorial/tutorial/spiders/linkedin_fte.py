@@ -48,3 +48,18 @@ class linkedin_fte(scrapy.Spider):
             items['jobImage'] = jobImage
             items['streamId'] = streamId
             yield items
+        for i in range(0,len(hyperlinks)):
+            
+            # print(hyperlinks[i])
+            yield response.follow(hyperlinks[i],callback = self.parse_hyperlink)
+            
+    def parse_hyperlink(self,response):
+        items = TutorialItem()
+
+        description = response.css("div.show-more-less-html__markup::text").extract()
+        for i in range(len(description)):
+            desc = description[i]
+            desc = desc.replace('\n', '')
+            desc = desc.strip()
+            # items['desc'] = desc
+            print(desc)    
