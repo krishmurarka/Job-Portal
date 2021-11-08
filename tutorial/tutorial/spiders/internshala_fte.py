@@ -1,19 +1,10 @@
 import scrapy
 from ..items import TutorialItem
-
-
 class internshala_fte(scrapy.Spider):
-
     name = 'internshala_fte'
-
     start_urls = ["https://internshala.com/fresher-jobs"]
-    items = TutorialItem()
     def parse(self, response):
-
         items = TutorialItem()
-
-        # internshala
-        # redirect - link for internshala jobs
         hyperlinks = response.css(
             "div.company div.profile a").xpath("@href").extract()
         job_titles = response.css(
@@ -23,8 +14,7 @@ class internshala_fte(scrapy.Spider):
         job_location = response.css(
             "div.individual_internship_details span a::text").extract()
         imaging= response.css("div.individual_internship_header")
-        # companyName.replace('\n', ' ').strip()
-        for i in range(0, len(company_name)):
+        for i in range(0,  2):
             job_title = job_titles[i]
             companyName = company_name[i]
             companyName = companyName.replace('\n', '')
@@ -33,8 +23,6 @@ class internshala_fte(scrapy.Spider):
             jobLocation = jobLocation.replace('\n', '')
             jobLocation = jobLocation.strip()
             hyperlink = "http://internshala.com"+hyperlinks[i]
-            # jobImage
-
             job_image = imaging[i].css("div.internship_logo img").xpath("@src").extract()
             job_image=' '.join([str(elem) for elem in job_image])
             if(len(job_image)==0):
@@ -44,10 +32,8 @@ class internshala_fte(scrapy.Spider):
                 jobImage = "http://internshala.com"+job_image
                 jobImage = jobImage.replace('\n', '')
                 jobImage = jobImage.strip()
-
             jobCategory = 2
             streamId = 'S'
-            # jobLocation = 'x'
             items['job_title'] = job_title
             items['hyperlink'] = hyperlink
             items['companyName'] = companyName
@@ -55,21 +41,11 @@ class internshala_fte(scrapy.Spider):
             items['jobCategory'] = jobCategory
             items['jobImage'] = jobImage
             items['streamId'] = streamId
-
-            # yield items
-        for i in range(0,len(hyperlinks)):
-            
-            # print(hyperlinks[i])
-            yield response.follow(hyperlinks[i],callback = self.parse_hyperlink)
-            
+            items['desc']='no description'
+            yield scrapy.Request(hyperlink,self.parse_hyperlink,meta={'hero_item': items})
+            print(items['companyName'])
     def parse_hyperlink(self,response):
-        # items = TutorialItem()
-
+        items = response.meta['hero_item']
         description = response.css("div.about_company_text_container::text").extract()
-        for i in range(len(description)):
-            desc = description[i]
-            desc = desc.replace('\n', '')
-            desc = desc.strip()
-            items['desc'] = desc
-            yield items
-            # print(desc)    
+        items['desc'] = description[0]
+        yield items
