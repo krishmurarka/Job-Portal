@@ -17,8 +17,8 @@ class TutorialPipeline(object):
         self.conn = mysql.connector.connect(
             host='localhost',
             user='root',
-            passwd='1234',
-            database='jobs'
+            passwd='taranmysql',
+            database='job_portal'
         )
         self.curr = self.conn.cursor()
 
@@ -26,7 +26,7 @@ class TutorialPipeline(object):
         print('a')
         self.curr.execute("""DROP TABLE IF EXISTS quotes_tb """)
         self.curr.execute("""CREATE TABLE quotes_tb(
-               id int, category_id int,company_logo text, company_name text, job_location text, job_title text, stream_id text, url VARCHAR(255), UNIQUE (url))""")
+               id int, category_id int,company_logo text, company_name text, job_location text, job_title text, stream_id text, url VARCHAR(255), UNIQUE (url) , description text)""")
 
     def process_item(self, item, spider):
         self.store_db(item)
@@ -36,7 +36,7 @@ class TutorialPipeline(object):
         # self.curr.execute("""INSERT INTO quotes_tb (job_title,url,company_name,job_location,category_id) VALUES(%s,%s,%s,%s,%d)""", (
         #     item['job_title'], item['hyperlink'], item['companyName'], item['jobLocation'],item['jobCategory']
 
-        self.curr.execute("""INSERT IGNORE INTO quotes_tb (job_title,url,company_logo,company_name,job_location,category_id,stream_id)VALUES(%s,%s,%s,%s,%s,%s,%s)""", (
-            item['job_title'], item['hyperlink'], item['jobImage'], item['companyName'], item['jobLocation'], item['jobCategory'], item['streamId']))
+        self.curr.execute("""INSERT IGNORE INTO quotes_tb (job_title,url,company_logo,company_name,job_location,category_id,stream_id , desc)VALUES(%s,%s,%s,%s,%s,%s,%s,%s)""", (
+            item['job_title'], item['hyperlink'], item['jobImage'], item['companyName'], item['jobLocation'], item['jobCategory'], item['streamId'] , item['desc']))
 
         self.conn.commit()
