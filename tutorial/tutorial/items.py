@@ -16,4 +16,5 @@ class TutorialItem(scrapy.Item):
     jobLocation = scrapy.Field()
     jobCategory = scrapy.Field()
     streamId = scrapy.Field()
+    desc = scrapy.Field()
     pass
