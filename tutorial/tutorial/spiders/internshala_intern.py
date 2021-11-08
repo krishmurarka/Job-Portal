@@ -5,7 +5,6 @@ from ..items import TutorialItem
 class internshala_intern(scrapy.Spider):
 
     name = 'internshala_intern'
-
     start_urls = [
         'https://internshala.com/internships/']
 
@@ -24,7 +23,6 @@ class internshala_intern(scrapy.Spider):
         job_location = response.css(
             "div.individual_internship_details span a::text").extract()
         imaging= response.css("div.individual_internship_header")
-        # companyName.replace('\n', ' ').strip()
         # print(job_image)
         for i in range(0, len(company_name)):
             job_title = job_titles[i]
@@ -48,7 +46,6 @@ class internshala_intern(scrapy.Spider):
                 jobImage = jobImage.strip()
             jobCategory = 1
             streamId = 'S'
-            # jobLocation = ''
             items['job_title'] = job_title
             items['hyperlink'] = hyperlink
             items['companyName'] = companyName
@@ -56,9 +53,21 @@ class internshala_intern(scrapy.Spider):
             items['jobCategory'] = jobCategory
             items['jobImage'] = jobImage
             items['streamId'] = streamId
+            # yield items
+        # print("ans = " + i.get())
+        for i in range(0,len(hyperlinks)):
+            # print(hyperlinks[i])
+            yield response.follow(hyperlinks[i],callback = self.parse_hyperlink)
+            
+    def parse_hyperlink(self,response):
+        items = TutorialItem()
 
-            yield items
-
-            # job_image = response.css(
-            #     "div.top-card-layout__entity-image-container img.artdeco-entity-image").xpath("@src").extract()
-            # yield {'job_image', job_image}
+        description = response.css("div.about_company_text_container::text").extract()
+        # print(description)
+        for i in range(len(description)):
+                desc = description[i]
+                desc = desc.replace('\n', '')
+                desc = desc.strip()
+                items['desc'] = desc
+                yield items
+                # print(desc)
