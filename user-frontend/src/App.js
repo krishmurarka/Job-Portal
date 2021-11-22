@@ -6,12 +6,14 @@ import {  Router, Switch, Route, Link } from "react-router-dom";
 import Fte from "./pages/employment/fte.js";
 import { FaAppStoreIos } from "react-icons/fa";
 import Footer from "./Components/Footer.js"
+import Login from "./pages/login/login.js";
 
 function App() {
  
   return (
     <div className="App">
       <Navbar className="navbar" />
+      <Login/>
       <Footer />
       {/* <Home/> */}
     </div>
