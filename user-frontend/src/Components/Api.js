@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import Card from "./Card.js";
 import axios from 'axios';
-
+import Pagination from '@mui/material/Pagination';
 let status;
 
 // }
@@ -54,8 +54,19 @@ class Api extends Component {
         console.log("mycard-state", this.state);
         let myArray = []
         for (let i = 1; i <data.length; i++) {
+            let desc=data[i].job_description
+            var desc_short=""
+            
+            var x=Math.min(150,desc.length)
+
+            for(let j=0;j<x;j++){
+                desc_short=desc_short+desc[j]
+            }
+            desc_short=desc_short+"..."
+            console.log(typeof(desc))
+            console.log("desc",desc)
             if (data[i])
-                myArray.push(<Card company_name={data[i].company_Name} url={data[i].url} job_location={data[i].job_Location} job_title={data[i].job_Title} company_logo={data[i].company_Logo} stream_id={data[i].stream_id} category_id={data[i].category_id} />)
+                myArray.push(<Card company_name={data[i].company_Name} url={data[i].url} job_location={data[i].job_Location} job_title={data[i].job_Title} company_logo={data[i].company_Logo} stream_id={data[i].stream_id} category_id={data[i].category_id}  description={desc_short}/>)
         }
         return myArray;
     }
@@ -64,6 +75,7 @@ class Api extends Component {
         return (
             <>
                 {this.myCard(this.state.apiresponse)}
+                {/* <Pagination count={10} color="primary"/> */}
             </>
 
         )

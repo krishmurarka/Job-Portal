@@ -56,9 +56,7 @@ class Card extends Component {
 
             </div>
             <p class="card-text">
-              We are a educational technology provider located in San
-              Fransisco,We are a educational technology provider located in San
-              Fransisco
+             {this.props.description}
             </p>
             <div className="buttons">
               <a href={this.props.url} target="_blank" class="btn btn-primary">
